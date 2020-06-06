@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rating',
     'bootstrap3',
     'rest_framework',
-    'star_ratings'
+    'star_ratings',
+    'tinymce',
 
 ]
 
