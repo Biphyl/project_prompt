@@ -14,9 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.urls import path,include
+from rest_framework import routers
 from django.contrib import admin
+from django.contrib.auth import views
+
+
+
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     path(r'',include('projects.urls')),
+    path('',include(router.urls)),
+    path(r'accounts/', include('django_registration.backends.one_step.urls')),
+    path(r'logout/', views.logout,{"next_page":'/'}),
+    path(r'ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings'))
 ]
