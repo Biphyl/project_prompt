@@ -17,7 +17,12 @@ from django.urls import path,include
 from rest_framework import routers
 from django.contrib import admin
 from django.contrib.auth import views
+from rating.views import PostViewset,ProfileViewset
 
+
+router = routers.DefaultRouter()
+router.register(r'profiles', ProfileViewset)
+router.register(r'posts', PostViewset)
 
 
 
@@ -28,4 +33,5 @@ urlpatterns = [
     path(r'accounts/', include('django_registration.backends.one_step.urls')),
     path(r'logout/', views.logout,{"next_page":'/'}),
     path(r'ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings'))
+    path(r'api-auth/', include('rest+framework.url', namespace='rest_framework'))
 ]
