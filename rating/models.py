@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from
+
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
     first_name = models.CharField(max_length=50)
