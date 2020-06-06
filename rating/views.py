@@ -49,7 +49,7 @@ def update_profile(request):
         return redirect('home')
     else:
         form = UpdateProfileForm(instance=request.user.profile)
-        return render(request,'myprojects/update-prof.html', {'form':form})
+        return render(request,'projects/update_profile.html', {'form':form})
     
 def profile_info(request):
     
@@ -58,4 +58,4 @@ def profile_info(request):
     projects =  request.user.post_set.all()
     
     
-    return render(request,'myprojects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
+    return render(request,'projects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
