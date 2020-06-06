@@ -24,7 +24,7 @@ def new_project(request):
         return redirect('home')
     else:
         form = ProjectUpload()
-        return render(request,'myprojects/new_post.html',{"form":form})
+        return render(request,'projects/new_post.html',{"form":form})
 
 def search_project(request):
     
@@ -37,4 +37,4 @@ def search_project(request):
 
     else:
         message = "You haven't searched for any term "
-        return render(request, 'myprojects/search.html', {"message": message})
+        return render(request, 'projects/search.html', {"message": message})
