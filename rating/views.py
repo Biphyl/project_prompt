@@ -5,6 +5,8 @@ from django.shortcuts import render,redirect
 from .models import Post,Profile,Reviews
 from .forms import ProjectUpload, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from .serializers import PostSerializer,ProfileSeralizer
 
 
 def home(request):
@@ -59,3 +61,20 @@ def profile_info(request):
     
     
     return render(request,'projects/profile.html',{"projects":projects,"profile":profile_info,"current_user":current_user})
+
+
+class PostViewset(viewsets.ModelViewSet):
+    '''
+    API endpoint that allows one to view the details of projects posted
+    '''
+    
+    queryset = Post.objects.all().order_by('title')
+    serializer_class = PostSerializer
+    
+class ProfileViewset(viewsets.ModelViewSet):
+    '''
+    API endpoint that allows one to view the details of profiles
+    '''
+    
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSeralizer
